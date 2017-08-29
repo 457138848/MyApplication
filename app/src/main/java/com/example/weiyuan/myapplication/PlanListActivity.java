@@ -55,12 +55,13 @@ public class PlanListActivity extends AppCompatActivity implements LoaderManager
             HashMap<String, Object> item = new HashMap<String, Object>();
             item.put("flightNo", lmPmFlightPlan.getFlightNo());
             item.put("acno", lmPmFlightPlan.getAcno());
+            item.put("actype", lmPmFlightPlan.getActype());
             item.put("flightDate", lmPmFlightPlan.getPlaArriveDate());
             data.add(item);
         }
             //创建SimpleAdapter适配器将数据绑定到item显示控件上
             SimpleAdapter adapter = new SimpleAdapter(this, data, R.layout.plan_list_item,
-                    new String[]{"flightNo", "acno", "flightDate"}, new int[]{R.id.flightNo, R.id.acno, R.id.flightDate});
+                    new String[]{"flightNo", "acno","actype", "flightDate"}, new int[]{R.id.flightNo, R.id.acno, R.id.actype, R.id.flightDate});
           //实现列表的显示
           listView.setAdapter(adapter);
 
