@@ -24,6 +24,7 @@ public class PlanListActivity {
             service = new PersonService(this);
             ListView listView = (ListView) this.findViewById(R.id.listView);
 
+
             //获取到集合数据
             List<Person> persons = service.getScrollData(0, 10);
             List<HashMap<String, Object>> data = new ArrayList<HashMap<String,Object>>();
