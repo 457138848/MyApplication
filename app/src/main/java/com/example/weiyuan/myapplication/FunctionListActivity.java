@@ -34,10 +34,15 @@ public class FunctionListActivity   extends AppCompatActivity implements LoaderM
             R.mipmap.webcam_receive};
     private String[] text = {"航班计划","航班动态","任务清单","特殊情况通报","飞机守护任务","生产任务执行","未还工具设备清单","地面设备日常检查","车辆日常检查","交班功能",
             "领料需求"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.function_list);
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         GridView gridView = (GridView) findViewById(R.id.gridView);
         gridView.setAdapter(new MyAdapter(this,images,text));
         gridView.setOnItemClickListener(FunctionListActivity.this);
@@ -64,9 +69,10 @@ public class FunctionListActivity   extends AppCompatActivity implements LoaderM
         switch (i) {
             //航班计划
             case 0:
-                new  AlertDialog.Builder(FunctionListActivity.this)
-                        .setTitle("航班计划" )
-                        .show();
+                Intent intent = new Intent();
+                startActivity(new Intent(FunctionListActivity.this, PlanListActivity.class));
+                finish();
+
                 break;
             case 1:
 
