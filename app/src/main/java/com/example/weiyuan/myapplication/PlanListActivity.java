@@ -43,7 +43,7 @@ public class PlanListActivity extends AppCompatActivity implements LoaderManager
         super.onCreate(savedInstanceState);
         setContentView(R.layout.plan_list_main);
         ListView listView = (ListView) this.findViewById(R.id.listView);
-        String s = GetPostUtils.sendPost("http://192.168.1.113:8080/api/v1/flightPlanList", null);
+//        String s = GetPostUtils.sendPost("http://192.168.1.113:8080/api/v1/flightPlanList", null);
         System.out.println(msData);//假的数据
 
 

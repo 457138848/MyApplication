@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Handler;
@@ -41,6 +42,7 @@ import java.util.List;
 
 
 import bean.Result;
+import cn.jpush.android.api.JPushInterface;
 import utils.GetPostUtils;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -68,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
     private Boolean loginflag = false;
+
     final Handler h = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -84,8 +87,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     };
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
 
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
         super.onCreate(savedInstanceState);
